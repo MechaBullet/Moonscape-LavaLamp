@@ -1,0 +1,20 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\DomeGravity.cs">
+    <Files>
+      <File FileName="Assets\Scripts\PlayerControl.cs" Line="12" Column="39" />
+      <File FileName="Assets\Scripts\Elevator.cs" Line="1" Column="1" />
+      <File FileName="Assets\Standard Assets\Characters\FirstPersonCharacter\Scripts\RigidbodyFirstPersonController.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Terminal.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\CameraGradientBackground.cs" Line="1" Column="1" />
+      <File FileName="Assets\Editor\TerminalEditor.cs" Line="14" Column="50" />
+      <File FileName="Assets\Editor\ElevatorEditor.cs" Line="9" Column="1" />
+      <File FileName="Assets\Editor\PowerNodeEditor.cs" Line="14" Column="28" />
+      <File FileName="Assets\DomeGravity.cs" Line="20" Column="36" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
