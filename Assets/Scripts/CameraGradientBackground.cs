@@ -27,7 +27,7 @@ public class CameraGradientBackground : MonoBehaviour {
 		
 		mesh.triangles = new int[6] {0, 1, 2, 1, 3, 2};
 		
-		Material mat = new Material("Shader \"Vertex Color Only\"{Subshader{BindChannels{Bind \"vertex\", vertex Bind \"color\", color}Pass{}}}");
+		Material mat = new Material(Shader.Find("Custom/VertexColors"));//new Material("Shader \"Vertex Color Only\"{Subshader{BindChannels{Bind \"vertex\", vertex Bind \"color\", color}Pass{}}}");
 		GameObject gradientPlane = new GameObject("Gradient Plane", typeof(MeshFilter), typeof(MeshRenderer));
 		
 		((MeshFilter)gradientPlane.GetComponent(typeof(MeshFilter))).mesh = mesh;

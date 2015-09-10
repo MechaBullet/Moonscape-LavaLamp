@@ -19,7 +19,7 @@ public class Terminal : MonoBehaviour {
 	}
 
 	public void SetOn(Transform _node) {
-		if(_node.GetComponent<PowerNode>().matColor.ToHexStringRGB() == keyColor.ToHexStringRGB()) {
+		if(_node.GetComponent<PowerNode>().matColor.ToString() == keyColor.ToString()) {
 			node = _node;
 			node.position = transform.position + transform.up * 1.25f;
 			//node.parent = transform;

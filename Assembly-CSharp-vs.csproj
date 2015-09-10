@@ -54,6 +54,7 @@
      <Compile Include="Assets\Scripts\DomeGravity.cs" />
      <Compile Include="Assets\Scripts\Elevator.cs" />
      <Compile Include="Assets\Scripts\PlayerAcrobatics.cs" />
+     <Compile Include="Assets\Scripts\PlayerCollection.cs" />
      <Compile Include="Assets\Scripts\PlayerControl.cs" />
      <Compile Include="Assets\Scripts\PowerNode.cs" />
      <Compile Include="Assets\Scripts\Terminal.cs" />
