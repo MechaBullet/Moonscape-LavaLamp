@@ -22,6 +22,7 @@ public class PlayerControl : MonoBehaviour {
 		if(inGrav) {
 			GetComponent<Rigidbody>().AddForce(Physics.gravity);
 		}
+
 		if(!paused) {
 			Cursor.lockState = CursorLockMode.Locked;
 			Cursor.visible = false;
