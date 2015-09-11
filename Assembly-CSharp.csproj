@@ -45,10 +45,11 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\PowerCore.cs" />
      <Compile Include="Assets\Scripts\AnimatedUVs.cs" />
+     <Compile Include="Assets\Scripts\BoxPush.cs" />
      <Compile Include="Assets\Scripts\Bridge.cs" />
      <Compile Include="Assets\Scripts\CameraGradientBackground.cs" />
+     <Compile Include="Assets\Scripts\ConverterHex.cs" />
      <Compile Include="Assets\Scripts\Dialog.cs" />
      <Compile Include="Assets\Scripts\DialogManager.cs" />
      <Compile Include="Assets\Scripts\DomeGravity.cs" />
@@ -56,9 +57,10 @@
      <Compile Include="Assets\Scripts\PlayerAcrobatics.cs" />
      <Compile Include="Assets\Scripts\PlayerCollection.cs" />
      <Compile Include="Assets\Scripts\PlayerControl.cs" />
+     <Compile Include="Assets\Scripts\PowerCore.cs" />
      <Compile Include="Assets\Scripts\PowerNode.cs" />
+     <Compile Include="Assets\Scripts\Shard.cs" />
      <Compile Include="Assets\Scripts\Terminal.cs" />
-     <Compile Include="Assets\Shard.cs" />
      <None Include="Assets\Standard Assets\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendOneOne.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\NoiseEffectShaderRGB.shader" />

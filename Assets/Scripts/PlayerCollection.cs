@@ -7,10 +7,14 @@ public class PlayerCollection : MonoBehaviour {
 	public int cores = 0;
 	private Text shardCount;
 	private Text coreCount;
+	private int allShards = 0;
+	private int allCores = 0;
 
 	void Start() {
 		shardCount = GameObject.Find("Canvas/ShardCount").GetComponent<Text>();
 		coreCount = GameObject.Find("Canvas/CoreCount").GetComponent<Text>();
+		allShards = GameObject.FindGameObjectsWithTag("Shard").Length;
+		allCores = GameObject.FindGameObjectsWithTag("Core").Length;
 
 		UpdateCounts();
 	}
@@ -32,8 +36,8 @@ public class PlayerCollection : MonoBehaviour {
 	}
 
 	public void UpdateCounts() {
-		shardCount.text = "Shards: " + shards;
-		coreCount.text = "Cores: " + cores;
+		shardCount.text = "Shards: " + shards + "/" + allShards;
+		coreCount.text = "Cores: " + cores + "/" + allCores;
 	}
 
 	public string RandomNote() {

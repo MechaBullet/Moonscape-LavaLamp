@@ -10,6 +10,9 @@ public class PlayerControl : MonoBehaviour {
 	public bool inGrav = true;
 	private UnityStandardAssets.Characters.FirstPerson.RigidbodyFirstPersonController controller;
 	private Vector3 lastGroundedPosition;
+	private Vector3 respawnPos;
+	private Quaternion respawnRot;
+	public bool isDebug = true;
 
 	void Awake() {	
 		inGrav = true;
@@ -19,8 +22,20 @@ public class PlayerControl : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+		if(isDebug) {
+			if(Input.GetKeyDown(KeyCode.Alpha1)) {
+				Instantiate(Resources.Load("Debug/Power Node - Blue"), transform.position + transform.forward, transform.rotation);
+			}
+			if(Input.GetKeyDown(KeyCode.Alpha2)) {
+				Instantiate(Resources.Load("Debug/Power Node - Yellow"), transform.position + transform.forward, transform.rotation);
+			}
+			if(Input.GetKeyDown(KeyCode.Alpha3)) {
+				Instantiate(Resources.Load("Debug/Power Node - Orange"), transform.position + transform.forward, transform.rotation);
+			}
+		}
+
 		if(inGrav) {
-			GetComponent<Rigidbody>().AddForce(Physics.gravity);
+			GetComponent<Rigidbody>().AddForce(Physics.gravity/2);
 		}
 
 		if(!paused) {
@@ -30,6 +45,17 @@ public class PlayerControl : MonoBehaviour {
 		else {
 			Cursor.lockState = CursorLockMode.None;
 			Cursor.visible = true;
+		}
+
+		if(controller.Grounded) {
+			StartCoroutine(CheckRespawn(transform.position, transform.rotation));
+		}
+		else {
+			if(Input.GetKeyDown(KeyCode.R)) {
+				transform.position = respawnPos;
+				transform.rotation = respawnRot;
+				GetComponent<Rigidbody>().velocity = Vector3.zero;
+			}
 		}
 
 		if(Input.GetButtonDown("Fire1")) {
@@ -54,7 +80,7 @@ public class PlayerControl : MonoBehaviour {
 		Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
 		RaycastHit hit;
 		if(Physics.Raycast(ray, out hit, 3, 1 << LayerMask.NameToLayer("Observable"))) {
-			observableText.text = hit.transform.name;
+			observableText.text = hit.collider.transform.name;
 		}
 		else observableText.text = ".";
 	}
@@ -84,12 +110,21 @@ public class PlayerControl : MonoBehaviour {
 		}
 	}
 
+	IEnumerator CheckRespawn(Vector3 position, Quaternion rotation) {
+		yield return new WaitForSeconds(1);
+		if(controller.Grounded) {
+			respawnPos = position;
+			respawnRot = rotation;
+		}
+	}
+
 	void Place() {
 		Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
 		RaycastHit hit;
 		if(Physics.Raycast(ray, out hit, 3)) {
-			if(hit.transform.tag == "Terminal" && heldObject.name.StartsWith("Power Node")) {
-				hit.transform.GetComponent<Terminal>().SetOn(heldObject);
+			Debug.Log(hit.transform.name);
+			if(hit.collider.transform.tag == "Terminal" && heldObject.name.StartsWith("Power Node")) {
+				hit.collider.transform.GetComponent<Terminal>().SetOn(heldObject);
 			}
 		}
 		heldObject = null;

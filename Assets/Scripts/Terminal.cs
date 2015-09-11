@@ -10,6 +10,9 @@ public class Terminal : MonoBehaviour {
 	void Start() {
 		screen = transform.Find("Base/Screen");
 		screen.GetComponent<Renderer>().material.SetColor("_EmissionColor", keyColor);
+		if(node) {
+			SetOn(node);
+		}
 	}
 
 	void Update() {
@@ -19,7 +22,9 @@ public class Terminal : MonoBehaviour {
 	}
 
 	public void SetOn(Transform _node) {
-		if(_node.GetComponent<PowerNode>().matColor.ToString() == keyColor.ToString()) {
+		Color matColor = _node.GetComponent<PowerNode>().matColor;
+		Debug.Log("Turning on " + name);
+		if(ConverterHex.ColorToHex(matColor) == ConverterHex.ColorToHex(keyColor)) {
 			node = _node;
 			node.position = transform.position + transform.up * 1.25f;
 			//node.parent = transform;

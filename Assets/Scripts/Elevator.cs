@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class Elevator : MonoBehaviour {
-	public float moveHeight = 10;
+	public Vector3 moveVector = new Vector3(0,10,0);
 	public float speed = 1;
 	private bool powered;
 	public Vector3 origPos;
@@ -15,14 +15,14 @@ public class Elevator : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if(powered) {
-			transform.position = Vector3.Slerp(transform.position, origPos + Vector3.up * moveHeight, Time.deltaTime * speed);	                                   
+			transform.position = Vector3.MoveTowards(transform.position, origPos + moveVector, Time.deltaTime * speed);	                                   
 		}
 		else if(transform.position != origPos) {
-			transform.position = Vector3.Slerp(transform.position, origPos, Time.deltaTime * speed);
+			transform.position = Vector3.MoveTowards(transform.position, origPos, Time.deltaTime * speed);
 		}
 	}
 
-	void OnCollisionEnter(Collision col) {
+	void OnCollisionStay(Collision col) {
 		col.transform.root.SetParent(transform);
 	}
 

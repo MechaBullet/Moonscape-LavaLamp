@@ -16,8 +16,8 @@ public class ElevatorEditor : Editor {
 			origPos = el.transform.position;
 		else
 			origPos = el.origPos;
-		float moveHeight = el.moveHeight;
+		Vector3 moveVector = el.moveVector;
 
-		Handles.DrawLine(origPos, origPos + Vector3.up * moveHeight);
+		Handles.DrawLine(origPos, origPos + moveVector);
 	}
 }
