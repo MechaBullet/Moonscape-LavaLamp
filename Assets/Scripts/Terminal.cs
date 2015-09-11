@@ -22,8 +22,9 @@ public class Terminal : MonoBehaviour {
 	}
 
 	public void SetOn(Transform _node) {
+		//AudioSource source = ClipManager.PlayClipAt(Resources.Load("SFX/Terminal/TerminalOn") as AudioClip, transform.position);
+		GetComponents<AudioSource>()[0].Play();
 		Color matColor = _node.GetComponent<PowerNode>().matColor;
-		Debug.Log("Turning on " + name);
 		if(ConverterHex.ColorToHex(matColor) == ConverterHex.ColorToHex(keyColor)) {
 			node = _node;
 			node.position = transform.position + transform.up * 1.25f;
@@ -45,6 +46,8 @@ public class Terminal : MonoBehaviour {
 	}
 
 	public void SetOff() {
+		//AudioSource source = ClipManager.PlayClipAt(Resources.Load("SFX/Terminal/TerminalOff") as AudioClip, transform.position);
+		GetComponents<AudioSource>()[1].Play();
 		node.GetComponent<Rigidbody>().isKinematic = false;
 		//node.parent = null;
 

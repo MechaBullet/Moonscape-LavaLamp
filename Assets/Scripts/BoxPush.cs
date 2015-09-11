@@ -24,11 +24,20 @@ public class BoxPush : MonoBehaviour {
 					pushDir.x = 0;
 				}
 				targetPos = transform.position + pushDir.normalized;
+				AudioSource source = ClipManager.PlayClipAt(Resources.Load("SFX/Bass/Bass_" + RandomNote()) as AudioClip, transform.position);
+				source.dopplerLevel = 0.2f;
+				source.volume = 0.75f;
+				source.spatialBlend = 1;
 			}
 		}
 	}
 
 	void Update() {
 		transform.position = Vector3.MoveTowards(transform.position, targetPos, Time.deltaTime * speed);
+	}
+
+	public string RandomNote() {
+		string[] notes = new string[]{"c", "A", "B", "C", "D", "E", "F", "G"};
+		return notes[Random.Range(0, notes.Length - 1)];
 	}
 }

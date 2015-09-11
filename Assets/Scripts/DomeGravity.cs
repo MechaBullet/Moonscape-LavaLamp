@@ -11,6 +11,7 @@ public class DomeGravity : MonoBehaviour {
 
 	void OnTriggerEnter(Collider col) {
 		if(col.tag == "Player") {
+			//Debug.Log("Player Entered");
 			col.transform.Find("MainCamera/Visor").GetComponent<Animator>().SetBool("Wearing", false);
 			col.GetComponent<UnityStandardAssets.Characters.FirstPerson.RigidbodyFirstPersonController>().movementSettings.JumpForce = origJump;
 			col.GetComponent<PlayerControl>().inGrav = true;
@@ -19,6 +20,7 @@ public class DomeGravity : MonoBehaviour {
 
 	void OnTriggerExit(Collider col) {
 		if(col.tag == "Player") {
+			//Debug.Log("Player Exited");
 			col.transform.Find("MainCamera/Visor").GetComponent<Animator>().SetBool("Wearing", true);
 			col.GetComponent<UnityStandardAssets.Characters.FirstPerson.RigidbodyFirstPersonController>().movementSettings.JumpForce = origJump * 2;
 			col.GetComponent<PlayerControl>().inGrav = false;

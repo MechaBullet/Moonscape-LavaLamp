@@ -20,7 +20,7 @@ public class PlayerCollection : MonoBehaviour {
 	}
 
 	public void AddShard() {
-		AudioSource source = PlayClipAt(Resources.Load("SFX/Sine/Sine_" + RandomNote()) as AudioClip, transform.position);
+		AudioSource source = ClipManager.PlayClipAt(Resources.Load("SFX/Sine/Sine_" + RandomNote()) as AudioClip, transform.position);
 		source.dopplerLevel = 0;
 
 		shards++;
@@ -28,7 +28,7 @@ public class PlayerCollection : MonoBehaviour {
 	}
 
 	public void AddCore() {
-		AudioSource source = PlayClipAt(Resources.Load("SFX/Saw/Saw " + RandomNote()) as AudioClip, transform.position);
+		AudioSource source = ClipManager.PlayClipAt(Resources.Load("SFX/Saw/Saw " + RandomNote()) as AudioClip, transform.position);
 		source.dopplerLevel = 0;
 
 		cores++;
@@ -43,16 +43,5 @@ public class PlayerCollection : MonoBehaviour {
 	public string RandomNote() {
 		string[] notes = new string[8]{"c", "A", "B", "C", "D", "E", "F", "G"};
 		return notes[Random.Range(0, notes.Length - 1)];
-	}
-
-	AudioSource PlayClipAt(AudioClip clip, Vector3 pos) {
-		GameObject tempGO = new GameObject("TempAudio");//GameObject("TempAudio"); // create the temp object
-		tempGO.transform.position = pos; // set its position
-		AudioSource aSource = tempGO.AddComponent<AudioSource>(); // add an audio source
-		aSource.clip = clip; // define the clip
-		// set other aSource properties here, if desired
-		aSource.Play(); // start the sound
-		Destroy(tempGO, clip.length); // destroy object after clip duration
-		return aSource; // return the AudioSource reference
 	}
 }

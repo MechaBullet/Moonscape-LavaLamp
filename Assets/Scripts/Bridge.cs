@@ -9,6 +9,7 @@ public class Bridge : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		GetComponent<AudioSource>().enabled = false;
 		powered = false;
 		origPos = transform.position;
 	}
@@ -16,6 +17,7 @@ public class Bridge : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if(powered) {
+			GetComponent<AudioSource>().enabled = true;
 			//Move the platform out
 			transform.position = Vector3.Lerp(transform.position, origPos + transform.forward * (width/2), Time.deltaTime * speed);
 			//Increase the area of the platform
@@ -24,6 +26,7 @@ public class Bridge : MonoBehaviour {
 			transform.localScale = scale;
 		}
 		else {
+			GetComponent<AudioSource>().enabled = false;
 			transform.position = Vector3.Lerp(transform.position, origPos, Time.deltaTime * speed);
 
 			Vector3 scale = transform.localScale;

@@ -122,7 +122,6 @@ public class PlayerControl : MonoBehaviour {
 		Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
 		RaycastHit hit;
 		if(Physics.Raycast(ray, out hit, 3)) {
-			Debug.Log(hit.transform.name);
 			if(hit.collider.transform.tag == "Terminal" && heldObject.name.StartsWith("Power Node")) {
 				hit.collider.transform.GetComponent<Terminal>().SetOn(heldObject);
 			}
